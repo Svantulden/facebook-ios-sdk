@@ -97,27 +97,27 @@
                      recoveryOptionsTitles:(NSArray<NSString *> *)recoveryOptionsTitles
                                   delegate:(id<FBSDKGraphErrorRecoveryProcessorDelegate>)delegate
 {
-  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                           message:recoverySuggestion
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-  for (NSUInteger i = 0; i < recoveryOptionsTitles.count; i++) {
-    NSString *title = [FBSDKTypeUtility array:recoveryOptionsTitles objectAtIndex:i];
-    UIAlertAction *option = [UIAlertAction actionWithTitle:title
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *_Nonnull action) {
-                                                     [self->_recoveryAttempter attemptRecoveryFromError:self->_error
-                                                                                            optionIndex:i
-                                                                                      completionHandler:^(BOOL didRecover) {
-                                                                  [delegate processorDidAttemptRecovery:self didRecover:didRecover error:self->_error];
-                                                                  self->_delegate = nil;
-                                                                }];
-                                                   }];
-    [alertController addAction:option];
-  }
-  UIViewController *topMostViewController = [FBSDKInternalUtility topMostViewController];
-  [topMostViewController presentViewController:alertController
-                                      animated:YES
-                                    completion:nil];
+//  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+//                                                                           message:recoverySuggestion
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//  for (NSUInteger i = 0; i < recoveryOptionsTitles.count; i++) {
+//    NSString *title = [FBSDKTypeUtility array:recoveryOptionsTitles objectAtIndex:i];
+//    UIAlertAction *option = [UIAlertAction actionWithTitle:title
+//                                                     style:UIAlertActionStyleDefault
+//                                                   handler:^(UIAlertAction *_Nonnull action) {
+//                                                     [self->_recoveryAttempter attemptRecoveryFromError:self->_error
+//                                                                                            optionIndex:i
+//                                                                                      completionHandler:^(BOOL didRecover) {
+//                                                                  [delegate processorDidAttemptRecovery:self didRecover:didRecover error:self->_error];
+//                                                                  self->_delegate = nil;
+//                                                                }];
+//                                                   }];
+//    [alertController addAction:option];
+//  }
+//  UIViewController *topMostViewController = [FBSDKInternalUtility topMostViewController];
+//  [topMostViewController presentViewController:alertController
+//                                      animated:YES
+//                                    completion:nil];
 }
 
 - (void)displayAlertWithTitle:(NSString *)title
@@ -125,24 +125,24 @@
             cancelButtonTitle:(NSString *)localizedOK
                      delegate:(id<FBSDKGraphErrorRecoveryProcessorDelegate>)delegate
 {
-  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                           message:message
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-  UIAlertAction *OKAction = [UIAlertAction actionWithTitle:localizedOK
-                                                     style:UIAlertActionStyleCancel
-                                                   handler:^(UIAlertAction *_Nonnull action) {
-                                                     [self->_recoveryAttempter attemptRecoveryFromError:self->_error
-                                                                                            optionIndex:0
-                                                                                      completionHandler:^(BOOL didRecover) {
-                                                                  [delegate processorDidAttemptRecovery:self didRecover:didRecover error:self->_error];
-                                                                  self->_delegate = nil;
-                                                                }];
-                                                   }];
-  [alertController addAction:OKAction];
-  UIViewController *topMostViewController = [FBSDKInternalUtility topMostViewController];
-  [topMostViewController presentViewController:alertController
-                                      animated:YES
-                                    completion:nil];
+//  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+//                                                                           message:message
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//  UIAlertAction *OKAction = [UIAlertAction actionWithTitle:localizedOK
+//                                                     style:UIAlertActionStyleCancel
+//                                                   handler:^(UIAlertAction *_Nonnull action) {
+//                                                     [self->_recoveryAttempter attemptRecoveryFromError:self->_error
+//                                                                                            optionIndex:0
+//                                                                                      completionHandler:^(BOOL didRecover) {
+//                                                                  [delegate processorDidAttemptRecovery:self didRecover:didRecover error:self->_error];
+//                                                                  self->_delegate = nil;
+//                                                                }];
+//                                                   }];
+//  [alertController addAction:OKAction];
+//  UIViewController *topMostViewController = [FBSDKInternalUtility topMostViewController];
+//  [topMostViewController presentViewController:alertController
+//                                      animated:YES
+//                                    completion:nil];
 }
 
  #pragma mark - FBSDKErrorRecoveryAttempting "delegate"
